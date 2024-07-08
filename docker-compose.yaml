@@ -1,0 +1,29 @@
+version: '3.0'
+services:
+  chatbot:
+    user: root
+    build:
+      context: .
+      dockerfile: dockerfile-chatbot
+    command: "run -m models --enable-api --cors '*' --debug"
+    volumes:
+      - ./app:/app
+    network_mode: "host"
+  actionserver:
+    user: root
+    build:
+      context: .
+      dockerfile: dockerfile-chatbot
+    command: "run actions --debug"
+    volumes:
+      - ./app:/app
+    network_mode: "host"
+  webserver:
+    build:
+      context: .
+      dockerfile: dockerfile-webserver
+    volumes:
+      - ./website:/usr/share/nginx/html
+    ports:
+      - 8080:80
+

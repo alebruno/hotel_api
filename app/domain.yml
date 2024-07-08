@@ -1,0 +1,159 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - want_to_book_a_room
+  - want_to_cancel_reservation
+  - want_to_change_reservation
+  - want_information
+  - bot_challenge
+
+forms:
+  reservation_form:
+    required_slots:
+      - city
+      - first_name
+      - last_name
+      - number_of_guests
+      - arrival_date
+      - departure_date
+      - email
+
+slots:
+  city:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+        - active_loop: reservation_form
+          requested_slot: city
+  first_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: reservation_form
+           requested_slot: first_name
+  last_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: reservation_form
+           requested_slot: last_name
+  number_of_guests:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: reservation_form
+           requested_slot: number_of_guests
+  arrival_date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: reservation_form
+           requested_slot: arrival_date
+  departure_date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: reservation_form
+           requested_slot: departure_date
+  email:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: reservation_form
+           requested_slot: email
+
+responses:
+  utter_greet_and_offer_service:
+  - text: "Hi! I am a virtual assistant. Would you like to book a room?"
+
+  utter_no_cancellation:
+  - text: "Sorry, I can't cancel your booking. Please fill the cancellation form in the website or call our hotline. What else can I do for you?"
+  
+  utter_no_modification:
+  - text: "Sorry, I can't change your reservation. Please call our hotline. Is there anything else that I can do for you?"
+  
+  utter_no_information:
+  - text: "For more information please visit our website or call our hotline. Is there anything else that I can do?"
+
+  utter_start_booking:
+  - text: "Great, let's make a reservation."
+  
+  utter_offer_service:
+  - text: "Is there anything else that I can do for you?"
+
+  utter_you_are_welcome:
+  - text: "You are welcome."
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a virtual assistant, developed to support customers."
+
+  utter_ask_first_name:
+  - text: What is your first name?
+
+  utter_ask_last_name:
+  - text: What is your last name?
+
+  utter_ask_number_of_guests:
+  - text: For how many guests do you want to make a booking?
+
+  utter_ask_arrival_date:
+  - text: What is the arrival date?
+
+  utter_ask_departure_date:
+  - text: What is the departure date?
+
+  utter_ask_email:
+  - text: We are almost done. Can you please tell me your email?
+
+  utter_submit:
+  - text: Ok. Thanks!
+
+  utter_slots_values:
+  - text: "Summary of the reservation for you, {first_name} {last_name}\n\nCity: {city}\nNumber of guests: {number_of_guests}\nArrival:\n{arrival_date}\nDeparture:\n{departure_date}\nEmail: {email}\n\nIs that correct?"
+
+  utter_affirm_booking_requested:
+  - text: "We will shortly send you an email to confirm your booking. Please follow the link in the email for payment options."
+
+  utter_deny_booking_requested:
+  - text: "Booking cencelled."
+
+  utter_ask_city:
+    - text: "In which city do you want to book a room?"
+      buttons:
+      - title: "Berlin"
+        payload: "Berlin"
+      - title: "Munich"
+        payload: "Munich"
+      - title: "Stuttgart"
+        payload: "Stuttgart"
+
+actions:
+  - utter_slot_values
+  - utter_submit
+  - validate_reservation_form
+  - action_clear_slots
+
+session_config:
+  session_expiration_time: 120
+  carry_over_slots_to_new_session: false

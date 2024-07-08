@@ -1,0 +1,10 @@
+website/
+app/.bash_history
+app/.config/
+app/.keras/
+app/.rasa/
+app/models/
+app/results/
+backup_app/
+app/actions/__pycache__/
+

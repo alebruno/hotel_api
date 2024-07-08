@@ -1,0 +1,42 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet_and_offer_service
+  - intent: affirm
+  - action: utter_start_booking
+  - action: reservation_form
+  - active_loop: reservation_form
+  
+- story: recover from negative answer
+  steps:
+  - intent: greet
+  - action: utter_greet_and_offer_service
+  - intent: deny
+  - action: utter_offer_service
+
+- story: recover from bot challenge 
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - action: utter_offer_service
+  
+- story: recover from cancellation request 
+  steps:
+  - intent: want_to_cancel_reservation
+  - action: utter_no_cancellation
+
+  
+- story: recover from information request 
+  steps:
+  - intent: want_information
+  - action: utter_no_information
+
+  
+- story: recover from modification request 
+  steps:
+  - intent: want_to_change_reservation
+  - action: utter_no_modification

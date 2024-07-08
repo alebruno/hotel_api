@@ -1,0 +1,5 @@
+FROM rasa/rasa:3.6.18-full
+USER root
+RUN pip3 install --no-cache-dir dateparser text2num
+RUN python -m spacy download en_core_web_sm
+USER rasa

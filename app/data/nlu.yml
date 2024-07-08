@@ -1,0 +1,127 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - servus
+    - grüezi
+    - hey there
+    - hey man
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: thank
+  examples: |
+    - thank you
+    - many thanks
+    - thank you kindly
+    - i appreciate your support
+    - much obliged
+
+- intent: affirm
+  examples: |
+    - yes
+    - yep
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - alright
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - no thank you
+    - please don't
+
+- intent: want_to_book_a_room
+  examples: |
+    - I want to book a room
+    - please make a reservation
+    - could you please assist me in booking a room
+    - I would like to reserve a stay
+    - I want to make a hotel reservation
+    - help me set up a hotel reservation
+    - I'd like to arrange an accommodation
+    - could you assist me in making a hotel booking
+    - I want to arrange an accomodation
+    - I would like to reserve a place
+
+- intent: want_to_cancel_reservation
+  examples: |
+    - I need to cancel my reservation
+    - I want to cancel my booking
+    - could you assist me in canceling my reservation
+    - my flight is cancelled
+    - I am sick
+    - want to cancel my stay
+    - delete reservation
+    
+- intent: want_to_change_reservation
+  examples: |
+    - I need to change my reservation
+    - I want to modify my booking
+    - could you assist me in changing my reservation
+    - my trip is delayed
+    - can we move the reservation to next week
+    - I need to reshedule
+    - amend reservation
+    - please adjust my booking
+    - change reservation
+    
+- intent: want_information
+  examples: |
+    - what is the weather
+    - what are is the check-in time
+    - at what time does the breakfast starts
+    - what can I visit
+    - museum
+    - tourist attraction
+    - can you give me more information
+    - I need information
+    - please tell me
+    - I want to talk to your manager
+    - I will be late
+    - do you have a restaurant
+    - dinner
+    - lunch
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - who are you?
+    - what is your name?
+    - what are you?
+    - are you a human?
+    - who made you?
+    - am I talking to a bot?
+    - am I talking to a human?

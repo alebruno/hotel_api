@@ -1,0 +1,53 @@
+version: "3.1"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - action: utter_offer_service
+
+- rule: Say 'You are welcome' anytime the user expresses gratitude
+  steps:
+  - intent: thank
+  - action: utter_you_are_welcome
+  - action: utter_offer_service
+
+- rule: Activate form
+  steps:
+  - intent: want_to_book_a_room
+  - action: utter_start_booking
+  - action: reservation_form
+  - active_loop: reservation_form
+
+- rule: Submit form
+  condition:
+  - active_loop: reservation_form
+  steps:
+  - action: reservation_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: utter_slots_values
+  
+- rule: Ask confirmation - positive case
+  steps:
+  - action: utter_slots_values
+  - intent: affirm
+  - action: utter_affirm_booking_requested
+  # Here could be added an "action_send_email"
+  - action: action_clear_slots
+
+- rule: Ask confirmation - negative case
+  steps:
+  - action: utter_slots_values
+  - intent: deny
+  - action: utter_deny_booking_requested
+  - action: action_clear_slots
+  - action: utter_offer_service

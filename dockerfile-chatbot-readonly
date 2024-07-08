@@ -1,0 +1,6 @@
+FROM navigar89/rasa:extended
+ADD app /app
+# make sure we use the virtualenv
+ENV PATH="/opt/venv/bin:$PATH"
+SHELL ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c", "rasa run actions & rasa run -m models --enable-api --cors '*' --debug"]
