@@ -12,8 +12,7 @@ nlp = spacy.load("en_core_web_sm")
 
 
 def search_email(input_text: str) -> str:
-    """Searches the email in a string of text using a regex partially compliant with RFC 5322.
-    In a production system, the regex shall be fully compliant with RFC 5322.
+    """Searches the email in a string of text using a regex compliant with the HTML5 specification.
 
     Args:
         input_text (str): The string of text
@@ -21,8 +20,10 @@ def search_email(input_text: str) -> str:
     Returns:
         str: The email address if exactly one email address has been found, None otherwise.
     """
-    # Regular expression adapted from https://stackoverflow.com/questions/17681670/extract-email-sub-strings-from-large-document
-    results = re.findall(r"[\w\.-]+@[\w\.-]+\.\w+", input_text)
+    # Adapted from HTML5 specification. See https://html.spec.whatwg.org/#email-state-(type=email)
+    # Initial ^ and final $ have been removed to match any email address embedded in a larger string.
+    email_validation_regexp = r"[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*"
+    results = re.findall(email_validation_regexp, input_text)
     if len(results) == 1:
         return results[0]
     return None

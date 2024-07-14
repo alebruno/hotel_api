@@ -13,10 +13,12 @@ from actions.nlp_pipelines import (
 def test_search_email():
     """Tests the function search_email."""
     assert search_email("I don't remember my email.") is None
-    assert search_email("Sorry I don't know wh@t my email adress is") is None
+    assert search_email("Sorry I don't know what my email adress of @USER is. ") is None
     assert search_email("My email is testmail@gmx.ch, thank you") == "testmail@gmx.ch"
-    assert search_email("Of course!messy-writer@g-mail.us. That's my email.") == "messy-writer@g-mail.us"
+    assert search_email("Of course bro messy-writer@g-mail.us thats my email") == "messy-writer@g-mail.us"
+    assert search_email("My email starts with a ! but that's allowed by the standard:!username@domain") == "!username@domain"
     assert search_email("nice.user@hotmail.de") == "nice.user@hotmail.de"
+    assert search_email("Yes, have it: punctation.overusing.user@punctation.us...") == "punctation.overusing.user@punctation.us"
     assert search_email(" space.loving.user@nasa.us   ") == "space.loving.user@nasa.us"
     assert search_email("I have two emails: maybe.this@gmail.com and maybe.this.other.one@gmx.de.") is None
 

@@ -39,6 +39,7 @@ nlu:
     - thank you kindly
     - i appreciate your support
     - much obliged
+    - that was helpful
 
 - intent: affirm
   examples: |
@@ -48,20 +49,27 @@ nlu:
     - indeed
     - of course
     - that sounds good
+    - right
     - correct
     - alright
+    - go ahead
+    - affirmative
 
 - intent: deny
   examples: |
     - no
     - n
     - never
+    - nope
     - I don't think so
     - don't like that
     - no way
     - not really
     - no thank you
     - please don't
+    - wrong
+    - stop
+    - negative
 
 - intent: want_to_book_a_room
   examples: |
@@ -83,8 +91,12 @@ nlu:
     - could you assist me in canceling my reservation
     - my flight is cancelled
     - I am sick
+    - not be there in time
+    - please provide a refund
+    - something unexpected has happened
     - want to cancel my stay
     - delete reservation
+    - I can't come
     
 - intent: want_to_change_reservation
   examples: |
@@ -96,11 +108,13 @@ nlu:
     - I need to reshedule
     - amend reservation
     - please adjust my booking
-    - change reservation
+    - change the number of people
+    - I want to modify the date
     
 - intent: want_information
   examples: |
     - what is the weather
+    - how is the temperature there
     - what are is the check-in time
     - at what time does the breakfast starts
     - what can I visit
@@ -112,8 +126,15 @@ nlu:
     - I want to talk to your manager
     - I will be late
     - do you have a restaurant
-    - dinner
-    - lunch
+    - at what time is dinner
+    - when is breakfast
+    - do have parking
+    - can I park my car there
+    - recommend something to visit
+    - can you suggest
+    - can you recommend
+    - what is the address of the hotel
+    - till what time is the gym open
 
 - intent: bot_challenge
   examples: |
@@ -125,3 +146,8 @@ nlu:
     - who made you?
     - am I talking to a bot?
     - am I talking to a human?
+    - let me chat with a human
+    - let me talk to your boss
+    - who has created you
+    - I want to talk to your manager
+    - are you an artificial intelligence?
